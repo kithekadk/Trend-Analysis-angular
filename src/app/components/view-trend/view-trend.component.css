@@ -1,0 +1,58 @@
+.main{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    display: flex;
+
+}
+.sidebar{
+    background-color: aliceblue;
+}
+.sidebar, .appbody{
+    display: flex;
+    flex-direction: column;
+}
+
+.listCompanies{
+    background-color: white;
+    margin: 5px 10px;
+}
+.trend{
+    width:78vw;
+    margin:20px;
+    padding:20px;
+    border:aliceblue solid 2px;
+    border-radius: 10px;
+}
+.font{
+    color:rgb(59, 7, 88);
+    padding:10px;
+    font-weight: bold;
+    font-size: 22px;
+}
+.heading{
+    display: flex;
+    justify-content: space-between;
+}
+select{
+    margin-left: 40px;
+    padding: 9px;
+    background-color:rgb(95, 13, 139);
+    color:white;
+    border-radius: 4px;
+    border: none;
+}
+option{
+    color:black;
+    padding:9px 9px;
+    background-color: white;
+    border-radius: 4px;
+    font-weight: bold;
+    border: none;
+}
+input{
+    margin: 10px 10px 4px 10px;
+    border: none;
+    border-radius: 4px;
+    padding: 9px;
+}
