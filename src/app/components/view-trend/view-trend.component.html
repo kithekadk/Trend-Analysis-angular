@@ -1,33 +1,29 @@
 <div class="main">
     <div class="sidebar">
         <div class="font">Nasdaq</div>
-        <input type="text" name="search" id="search" placeholder="Type here to search">
-        <div class="listCompanies">
-            <b>sdfghjfdsdfgh</b><br>
-            <b>sdfghjfdsdfgh</b><br>
-            <b>sdfghjfdsdfgh</b><br>
-            <b>sdfghjfdsdfgh</b><br>
-            <b>sdfghjfdsdfgh</b><br>
-            <b>sdfghjfdsdfgh</b><br>
-            <b>sdfghjfdsdfgh</b><br>
-            <b>sdfghjfdsdfgh</b><br>
-            <b>sdfghjfdsdfgh</b><br>
+        <input type="text" name="search" id="search" placeholder="Type here to search" [(ngModel)]="filter">
+        <div class="listCompanies" *ngFor="let company of Companies | search:filter">
+            <div class="companyNames">{{company.name | titlecase}}</div>
         </div>
     </div>
 
     <div class="appbody">
         <div class="heading font">
             <div>SVSTR</div>
-            <div>
-                From:<input type="date" class="font"/>
-                To:<input type="date" class="font"/>
-            </div>
+            <form #myform="ngForm" (click)="getValues(myform.value)">
+                From:<input type="date" class="font" name="end" ngModel/>
+                To:<input type="date" class="font" name="start" ngModel/>
+            </form>
         </div>
         <div class="trend">
             <select name="" id="" >
                 <option value="">Closing Price</option>
                 <option value="">Adj. Closing Price</option>
             </select>
+            <div>
+                <canvas id="mychart" > {{chart}}</canvas>
+                <div *ngIf="startdate ===''"><h1>SELECT DATES TO VIEW GRAPH</h1></div>
+            </div>
         </div>
     </div>
 </div>
