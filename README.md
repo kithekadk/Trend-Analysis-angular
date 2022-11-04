@@ -1,4 +1,5 @@
 # TrendAnalysis
+Actively deployed [Here](http://loita-trend-analysis.s3-website-us-east-1.amazonaws.com/)
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 14.1.3.
 
