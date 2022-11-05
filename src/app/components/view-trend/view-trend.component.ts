@@ -2,6 +2,11 @@ import { Component, OnInit } from '@angular/core';
 import { ApiserviceService } from 'src/app/services/apiservice.service';
 import { companyInterface } from 'src/app/interfaces/companyInterface';
 import { Chart, CategoryScale,registerables } from 'chart.js';
+import { Store } from '@ngrx/store';
+import { companyState, getCompanies } from 'src/app/ngrx/reducer/CompanyReducer';
+import * as Actions from "../../ngrx/actions/CompanyActions";
+import { map } from 'rxjs';
+
 Chart.register(CategoryScale);
 Chart.register(...registerables);
 
@@ -15,19 +20,22 @@ interface startStop{
   styleUrls: ['./view-trend.component.css']
 })
 export class ViewTrendComponent implements OnInit {
-  Companies! :companyInterface[];
+  Companies$ =this.store.select(getCompanies).pipe(
+    map((res)=>{
+      return res
+    },(err:Error)=>{
+      console.log(err.message)
+    }
+    )
+  )
   filter=''
   startdate=''
   enddate=''
   chart:any
-  constructor(private api:ApiserviceService) { }
+  constructor(private api:ApiserviceService, private store: Store<companyState>) { }
 
   ngOnInit(): void {
-    this.api.getCompanies().subscribe(res=>{
-      this.Companies=res
-      return res
-    })
-    // this.getOneCompanyGraph()
+    this.store.dispatch(Actions.loadCompany())
   }
 
   getValues(data:startStop){

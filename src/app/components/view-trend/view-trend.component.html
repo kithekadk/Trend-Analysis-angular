@@ -1,8 +1,8 @@
 <div class="main">
-    <div class="sidebar">
+    <div class="sidebar" *ngIf="Companies$ | async as companies">
         <div class="font">Nasdaq</div>
         <input type="text" name="search" id="search" placeholder="Type here to search" [(ngModel)]="filter">
-        <div class="listCompanies" *ngFor="let company of Companies | search:filter">
+        <div class="listCompanies" *ngFor="let company of companies | search:filter">
             <div class="companyNames">{{company.name | titlecase}}</div>
         </div>
     </div>

@@ -3,7 +3,7 @@ import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 import { EffectsModule } from '@ngrx/effects';
-import { StoreModule } from '@ngrx/store';
+import {  StoreModule } from '@ngrx/store';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -23,6 +23,10 @@ import { SearchPipe } from './pipes/searchPipe';
     AppRoutingModule,
     HttpClientModule,
     FormsModule,
+    StoreModule.forRoot({},{}),
+    EffectsModule.forRoot([]),
+    EffectsModule.forFeature([companyEffects]),
+    StoreModule.forFeature('company', companyReducer)
 
   ],
   providers: [],
